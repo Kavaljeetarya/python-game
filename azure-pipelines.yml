@@ -19,4 +19,4 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
-      python3 -c "import yaml; exec(yaml.safe_load(open('azure-pipelines.yaml'))['code'])"
+      python3 -c "import yaml; exec(yaml.safe_load(open('azure-pipelines.yaml'))['run'])"
