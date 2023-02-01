@@ -18,12 +18,13 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
-      sudo yum install python3 -y
       sudo pip3 install PyYAML
+      sudo yum install python3 -y
 
 - task: CmdLine@2
   inputs:
     script: |
+      source ~/.bash_profile
       python3 -c "import yaml; exec(yaml.safe_load(open('code.yaml'))['code'])"
 
 # azure-pipeline.yml
