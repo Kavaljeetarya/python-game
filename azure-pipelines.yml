@@ -1,0 +1,22 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.x'
+
+- task: CmdLine@2
+  inputs:
+    script: |
+      sudo apt-get update
+      sudo apt-get install python3 -y
+      sudo pip3 install PyYAML
+
+- task: CmdLine@2
+  inputs:
+    script: |
+      python3 -c "import yml; exec(yml.safe_load(open('azure-pipelines.yml'))['code'])"
