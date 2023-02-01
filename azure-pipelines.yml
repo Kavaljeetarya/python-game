@@ -1,0 +1,29 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.x'
+
+- task: CmdLine@2
+  inputs:
+    script: |
+      sudo yum install python3 -y
+      sudo pip3 install PyYAML
+
+- task: CmdLine@2
+  inputs:
+    script: |
+      python3 -c "import yaml; exec(yaml.safe_load(open('code.yaml'))['code'])"
+
+# azure-pipeline.yml
