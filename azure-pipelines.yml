@@ -25,6 +25,6 @@ steps:
   inputs:
     script: |
       source ~/.bash_profile
-      python3 -c "import yaml; exec(yaml.safe_load(open('code.yaml'))['code'])"
+      python3 -c "import yaml; exec(yaml.safe_load(open('azure-pipelines.yaml'))['azure-pipelines'])"
 
-# azure-pipeline.yml
+# azure-pipeline.yaml
