@@ -19,4 +19,7 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
-      python3 -c "import yaml; exec(yaml.safe_load(open('azure-pipelines.yml'))['tempCodeRunnerFile.py'])" || true
+      set -e
+      EXIT_CODE=0
+      python3 -c "import yaml; exec(yaml.safe_load(open('azure-pipelines.yml'))['tempCodeRunnerFile.py'])" || EXIT_CODE=$?
+      echo $EXIT_CODE
